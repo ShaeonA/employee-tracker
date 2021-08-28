@@ -68,7 +68,7 @@ function showMenu() {
 
 function viewDepartments() {
     //query db for depts. 
-    db.query(`SELECT FROM viewDepartments`, (err, row) => {
+    connection.query(`SELECT FROM viewDepartments`, (err, row) => {
         if (err) {
             console.log(err);
         }
