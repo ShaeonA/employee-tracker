@@ -68,7 +68,7 @@ function showMenu() {
 
 function viewDepartments() {
     //query db for depts. 
-    connection.query(`SELECT FROM viewDepartments`, (err, row) => {
+    connection.query(`SELECT * FROM departments`, (err, row) => {
         if (err) {
             console.log(err);
         }
@@ -81,6 +81,13 @@ function viewDepartments() {
 
 function viewRoles() {
     //query db for roles. 
+    connection.query(`SELECT * FROM role`, (err, row) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log(row);
+    });
+
 
     // //print dept to screen 
     showMenu();
@@ -88,6 +95,13 @@ function viewRoles() {
 
 function viewEmployees() {
     //query db for employees. 
+    connection.query(`SELECT * FROM employee`, (err, row) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log(row);
+    });
+
 
 
     //print dept to screen 
