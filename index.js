@@ -1,21 +1,21 @@
 const inquirer = require('inquirer');
 const { allowedNodeEnvironmentFlags } = require('process');
 const mySQL = require('mysql2');
-require('console.table'); 
+require('console.table');
 const PORT = process.env.port || 3001;
 
 const connection = mySQL.createConnection({
     host: "localhost",
     user: "root",
-    password:"Shaeon11.",
+    password: "Shaeon11.",
     database: "employee_tracker_db"
 })
 
-connection.connect(function (error){
-  if (error) { 
-      throw error
-  }
- })
+connection.connect(function (error) {
+    if (error) {
+        throw error
+    }
+})
 
 function showMenu() {
     inquirer.prompt([{
@@ -68,33 +68,30 @@ function showMenu() {
 
 function viewDepartments() {
     //query db for depts. 
-    db.query('SELECT * FROM viewDepartments', function (err, rows ) {
-        if(err) throw err ;
-      
+    db.query(`SELECT FROM viewDepartments`, (err, row) => {
+        if (err) {
+            console.log(err);
+        }
+        console.log(row);
     });
-    //print dept to screen 
 
+    //print dept to screen 
     showMenu();
 }
 
 function viewRoles() {
     //query db for roles. 
-    db.query('SELECT * FROM viewDepartments', function (err, ) {
-        if(err) throw err ;  
-    });
-    //print dept to screen 
+
+    // //print dept to screen 
     showMenu();
 }
 
 function viewEmployees() {
     //query db for employees. 
-    db.query('SELECT * FROM viewDepartments', function (err, ) {
-        if(err) throw err ;
-        
-    });
-    
+
+
     //print dept to screen 
-     showMenu();
+    showMenu();
 }
 
 function addDepartment() {
