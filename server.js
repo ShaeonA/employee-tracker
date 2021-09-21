@@ -95,7 +95,7 @@ function viewRoles() {
 
 function viewEmployees() {
     //query db for employees. 
-    connection.query(`SELECT * FROM employee`, (err, row) => {
+    connection.query("SELECT * FROM employee", (err, row) => {
         if (err) {
             console.log(err);
         }
@@ -109,17 +109,37 @@ function viewEmployees() {
 }
 
 function addDepartment() {
-    console.log('addDepartment')
+    inquirer.prompt([{
+        type: "input",
+        name: "Please add a department",
+    }])
+
 }
 
 function addRole() {
-    console.log('addRole')
+    inquirer.prompt([{
+        type: "input",
+        name: "Please add a role including name , salary, and department",
+    }])
 }
 function addEmployee() {
-    console.log('addEmployee')
+    inquirer.prompt([{
+        type: "input",
+        name: "Please add an employee including first name, last name, role, and manager",
+    }])
 }
 function updateRole() {
-    console.log('updateRole')
+    inquirer.prompt([{
+        type: "list",
+        name: "Please select a role to update",
+        choices: [
+            "driver",
+            "guard",
+            "doorman",
+            "conceierge",
+            "would you like to exit"
+        ]
+    }])
 }
 
 
