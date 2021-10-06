@@ -73,10 +73,11 @@ function viewDepartments() {
             console.log(err);
         }
         console.log(row);
+        showMenu();
     });
 
     //print dept to screen 
-    showMenu();
+  
 }
 
 function viewRoles() {
@@ -86,11 +87,12 @@ function viewRoles() {
             console.log(err);
         }
         console.log(row);
+        showMenu();
     });
 
 
     // //print dept to screen 
-    showMenu();
+ 
 }
 
 function viewEmployees() {
@@ -100,19 +102,25 @@ function viewEmployees() {
             console.log(err);
         }
         console.log(row);
+        showMenu();
     });
 
 
 
     //print dept to screen 
-    showMenu();
+    
 }
 
 function addDepartment() {
     inquirer.prompt([{
         type: "input",
-        name: "Please add a department",
-    }])
+        name: "DepartmentName",
+        message: "What is Dept. Name"
+    }]).then(answers=>{
+        console.log(answers);
+        //connection.query (answers stmnt)
+        //ShowMenu
+    })
 
 }
 
@@ -129,17 +137,21 @@ function addEmployee() {
     }])
 }
 function updateRole() {
-    inquirer.prompt([{
-        type: "list",
-        name: "Please select a role to update",
-        choices: [
-            "driver",
-            "guard",
-            "doorman",
-            "conceierge",
-            "would you like to exit"
-        ]
-    }])
+    connection.query(`SELECT * FROM role`, (err, row) => {
+        if (err) {
+            console.log(err);
+        }
+       const choices = row.map(role=>role.title)
+        inquirer.prompt([{
+            type: "list",
+            name: "Please select a role to update",
+            choices: choices
+        }])
+    });
+
+
+    
+   
 }
 
 
